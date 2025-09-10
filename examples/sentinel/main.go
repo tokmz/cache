@@ -147,7 +147,7 @@ func highAvailabilityTest(ctx context.Context, client cache.Client) {
 
 	// 创建一些关键业务数据
 	businessData := map[string]interface{}{
-		"business:total_users":    1000,
+		"business:total_users":     1000,
 		"business:active_sessions": 150,
 		"business:daily_revenue":   25000.50,
 		"business:last_backup":     time.Now().Format(time.RFC3339),
@@ -302,7 +302,7 @@ func connectionMonitoring(ctx context.Context, client cache.Client) {
 		}
 
 		for field, value := range monitorData {
-			err := client.HSet(ctx, monitorKey, field, value)
+			err = client.HSet(ctx, monitorKey, field, value)
 			if err != nil {
 				log.Printf("  记录监控数据失败: %v", err)
 				break
